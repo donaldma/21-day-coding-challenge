@@ -16,3 +16,11 @@ const GRID = [
 const countRows = () => {
   return GRID.length
 }
+
+// Day 2
+const countColumns = () => {
+  const rows = countRows()
+  const total = GRID.reduce((total, x) => total + x.length, 0)
+
+  return total / rows
+}
