@@ -48,3 +48,11 @@ const convertColumn = (coord) => {
 
   return columnPosition.toLowerCase().charCodeAt(0) - 97
 }
+
+// Day 6
+const lightCell = (coord) => {
+  const columnPosition = convertColumn(coord)
+  const rowPosition = coord.split("")[1] - 1
+
+  return GRID[rowPosition][columnPosition]
+}
