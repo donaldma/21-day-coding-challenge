@@ -32,3 +32,11 @@ const gridSize = () => {
 
   return `${columns} x ${rows}`
 }
+
+// Day 4
+const totalCells = () => {
+  const rows = countRows()
+  const columns = countColumns()
+
+  return columns * rows
+}
