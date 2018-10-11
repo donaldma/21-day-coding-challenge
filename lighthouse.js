@@ -24,3 +24,11 @@ const countColumns = () => {
 
   return total / rows
 }
+
+// Day 3
+const gridSize = () => {
+  const rows = countRows()
+  const columns = countColumns()
+
+  return `${columns} x ${rows}`
+}
