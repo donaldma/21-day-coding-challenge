@@ -40,3 +40,11 @@ const totalCells = () => {
 
   return columns * rows
 }
+
+// Day 5
+const convertColumn = (coord) => {
+  const coordSplit = coord.split("")
+  const columnPosition = coordSplit[0]
+
+  return columnPosition.toLowerCase().charCodeAt(0) - 97
+}
