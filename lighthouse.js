@@ -56,3 +56,10 @@ const lightCell = (coord) => {
 
   return GRID[rowPosition][columnPosition]
 }
+
+// Day 7
+const isRock = (coord) => {
+  const cell = lightCell(coord)
+
+  return cell === '^'
+}
