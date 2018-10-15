@@ -70,3 +70,10 @@ const isCurrent = (coord) => {
 
   return cell === '~'
 }
+
+// Day 9
+const isShip = (coord) => {
+  const cell = lightCell(coord)
+
+  return cell === 'v'
+}
