@@ -77,3 +77,8 @@ const isShip = (coord) => {
 
   return cell === 'v'
 }
+
+// Day 10
+const lightRow = (row) => {
+  return GRID[row - 1]
+}
