@@ -63,3 +63,10 @@ const isRock = (coord) => {
 
   return cell === '^'
 }
+
+// Day 8
+const isCurrent = (coord) => {
+  const cell = lightCell(coord)
+
+  return cell === '~'
+}
