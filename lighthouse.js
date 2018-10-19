@@ -58,7 +58,7 @@ const isRock = (coord) => {
   return cell === '^'
 }
 
-const isCurrent = (coord) => {
+const isCurrent = (coord, c) => {
   const cell = lightCell(coord)
 
   return cell === '~'
@@ -77,4 +77,32 @@ const lightRow = (row) => {
 const lightColumn = (col) => {
   const columnPosition = convertColumn(col)
   return GRID.map(x => x[columnPosition])
+}
+
+const allRocks = () => {
+  const array = GRID.map((each, index) =>
+    each.map((x, i) => {
+      if (x === '^') {
+        const columnPosition = String.fromCharCode(97 + i).toUpperCase()
+        const rowPosition = index + 1
+        return columnPosition + rowPosition
+      }
+    }).filter(x => x !== undefined)
+  )
+
+  return [].concat(...array)
+}
+
+const allCurrents = () => {
+  const array = GRID.map((each, index) =>
+    each.map((x, i) => {
+      if (x === '~') {
+        const columnPosition = String.fromCharCode(97 + i).toUpperCase()
+        const rowPosition = index + 1
+        return columnPosition + rowPosition
+      }
+    }).filter(x => x !== undefined)
+  )
+
+  return [].concat(...array)
 }
