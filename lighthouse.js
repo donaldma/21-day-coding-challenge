@@ -104,3 +104,9 @@ const allCurrents = () => {
 const allShips = () => {
   return getAllCoordsForItem('v')
 }
+
+const firstRock = () => {
+  const rocks = allRocks()
+
+  return rocks[0]
+}
