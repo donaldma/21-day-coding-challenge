@@ -110,3 +110,9 @@ const firstRock = () => {
 
   return rocks[0]
 }
+
+const firstCurrent = () => {
+  const currents = allCurrents()
+
+  return currents[0]
+}
