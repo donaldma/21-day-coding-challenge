@@ -116,3 +116,9 @@ const firstCurrent = () => {
 
   return currents[0]
 }
+
+const shipReport = () => {
+  const ships = allShips()
+
+  return [ships[0], ships[ships.length - 1]]
+}
