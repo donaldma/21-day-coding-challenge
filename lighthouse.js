@@ -122,3 +122,11 @@ const shipReport = () => {
 
   return [ships[0], ships[ships.length - 1]]
 }
+
+const howDangerous = (coord) => {
+  let percentDangerous
+  if(isRock(coord)) { percentDangerous = 100 }
+  if(isCurrent(coord)) { percentDangerous = 50 }
+
+  return percentDangerous
+}
