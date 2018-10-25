@@ -80,7 +80,7 @@ const lightColumn = (col) => {
 }
 
 const getAllCoordsForItem = (item) => {
-    const array = GRID.map((each, index) =>
+  const array = GRID.map((each, index) =>
     each.map((x, i) => {
       if (x === item) {
         const columnPosition = String.fromCharCode(97 + i).toUpperCase()
@@ -94,7 +94,7 @@ const getAllCoordsForItem = (item) => {
 }
 
 const allRocks = () => {
-return getAllCoordsForItem('^')
+  return getAllCoordsForItem('^')
 }
 
 const allCurrents = () => {
@@ -125,8 +125,18 @@ const shipReport = () => {
 
 const howDangerous = (coord) => {
   let percentDangerous
-  if(isRock(coord)) { percentDangerous = 100 }
-  if(isCurrent(coord)) { percentDangerous = 50 }
+  if (isRock(coord)) { percentDangerous = 100 }
+  if (isCurrent(coord)) { percentDangerous = 50 }
 
   return percentDangerous
+}
+
+const percentageReport = () => {
+  const cells = totalCells()
+  const rocks = allRocks()
+  const currents = allCurrents()
+  const rocksPercentage = parseFloat(rocks.length / cells * 100).toFixed(2)
+  const currentsPercentage = parseFloat(currents.length / cells * 100).toFixed(2)
+
+  return [rocksPercentage, currentsPercentage]
 }
