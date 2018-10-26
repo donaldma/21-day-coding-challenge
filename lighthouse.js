@@ -38,15 +38,14 @@ const totalCells = () => {
 }
 
 const convertColumn = (coord) => {
-  const coordSplit = coord.split("")
-  const columnPosition = coordSplit[0]
+  const columnPosition = coord.replace(/[^a-zA-Z ]/g, "")
 
   return columnPosition.toLowerCase().charCodeAt(0) - 97
 }
 
 const lightCell = (coord) => {
   const columnPosition = convertColumn(coord)
-  const rowPosition = coord.split("")[1] - 1
+  const rowPosition = coord.replace(/[^0-9 ]/g, "") - 1
   const cell = GRID[rowPosition][columnPosition]
 
   return cell ? cell : false
@@ -124,11 +123,9 @@ const shipReport = () => {
 }
 
 const howDangerous = (coord) => {
-  let percentDangerous
-  if (isRock(coord)) { percentDangerous = 100 }
-  if (isCurrent(coord)) { percentDangerous = 50 }
-
-  return percentDangerous
+  if (isRock(coord)) return 100
+  if (isCurrent(coord)) return 50
+  else return 0
 }
 
 const percentageReport = () => {
@@ -139,4 +136,17 @@ const percentageReport = () => {
   const currentsPercentage = parseFloat(currents.length / cells * 100).toFixed(2)
 
   return [rocksPercentage, currentsPercentage]
+}
+
+const safetyReport = () => {
+  return GRID.map((each, index) =>
+    each.map((x, i) => {
+      const columnPosition = String.fromCharCode(97 + i).toUpperCase()
+      const rowPosition = index + 1
+      const coord = columnPosition + rowPosition
+      const dangerPercent = howDangerous(coord)
+
+      return dangerPercent
+    })
+  )
 }
