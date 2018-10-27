@@ -43,9 +43,13 @@ const convertColumn = (coord) => {
   return columnPosition.toLowerCase().charCodeAt(0) - 97
 }
 
+const convertRow = (coord) => {
+  return coord.replace(/[^0-9 ]/g, "") - 1
+}
+
 const lightCell = (coord) => {
   const columnPosition = convertColumn(coord)
-  const rowPosition = coord.replace(/[^0-9 ]/g, "") - 1
+  const rowPosition = convertRow(coord)
   const cell = GRID[rowPosition][columnPosition]
 
   return cell ? cell : false
@@ -149,4 +153,13 @@ const safetyReport = () => {
       return dangerPercent
     })
   )
+}
+
+const calcDistance = (coord1, coord2) => {
+  const coord1Column = convertColumn(coord1)
+  const coord1Row = convertRow(coord1)
+  const coord2Column = convertColumn(coord2)
+  const coord2Row = convertRow(coord2)
+
+  return Math.hypot(coord2Row - coord1Row, coord2Column - coord1Column).toFixed(2)
 }
